@@ -24,5 +24,14 @@ describe 'comedian index page' do
       expect(page). to have_content(comedian_1.specials.second.title)
 
     end
+
+    it 'they see the average age of all comedians' do
+      comedian_1 = Comedian.create(name: 'John Mulaney', age: 30)
+      comedian_2 = Comedian.create(name: 'Bill Burr', age: 50)
+
+      visit comedians_path
+
+      expect(page). to have_content("Average age: 40")
+    end
   end
 end
